@@ -1,0 +1,36 @@
+{
+  "task": "先按联系人整理各自的通知要点，再合并成不带个人称呼的通用通知模板。",
+  "records": {
+    "1": {
+      "tool_name": "read_note",
+      "arguments": {"note_id": 42},
+      "call_hash": "工具名称和输入参数的哈希（示例）",
+      "text": "联系人：张三；通知要点：周五下午停电。",
+      "result_hash": "完整返回文本的哈希（示例）",
+      "entities": {"0": {"type": "PERSON", "start": 4, "end": 6}},
+      "policies": {
+        "0": {
+          "action": "replace",
+          "replacement": "人物A",
+          "last_review": {"input_hash": "上次判定输入的哈希（示例）", "read_ranges": {"1": [[0, 19]]}}
+        }
+      },
+      "sanitized_text": "联系人：人物A；通知要点：周五下午停电。",
+      "sent_versions": ["联系人：人物A；通知要点：周五下午停电。"],
+      "summary": "张三是联系人，通知事项为周五下午停电。"
+    },
+    "2": {
+      "tool_name": "read_note",
+      "arguments": {"note_id": 43},
+      "call_hash": "本轮工具名称和输入参数的哈希（示例）",
+      "text": "模板要求：合并通知事项，不保留个人称呼。",
+      "result_hash": "本轮完整返回文本的哈希（示例）",
+      "entities": {},
+      "policies": {},
+      "sanitized_text": null,
+      "sent_versions": [],
+      "summary": "模板要求合并事项，不保留个人称呼。"
+    }
+  },
+  "entity_index": {"PERSON": {"张三": [{"record_id": "1", "entity_id": "0"}], "人物A": [{"record_id": "1", "entity_id": "0"}]}}
+}
